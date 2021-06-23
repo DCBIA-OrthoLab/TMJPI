@@ -1,9 +1,11 @@
 FROM dcbia/tmjpi:latest
 
+RUN LD_LIBRARY_PATH_TEMP=$LD_LIBRARY_PATH
+RUN unset LD_LIBRARY_PATH
 RUN mkdir -p /app/.nvm
 
 ENV NVM_DIR=/app/.nvm
-ENV NODE_VERSION v14.16.0
+ENV NODE_VERSION=v14.16.0
 
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash \
 	&& . $NVM_DIR/nvm.sh \
@@ -11,3 +13,4 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | 
     && npm i clusterpost-execution -g
 
 ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH_TEMP
