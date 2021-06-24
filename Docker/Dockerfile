@@ -5,9 +5,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     wget \
     zip \
-	libxt6 \
-	openjdk-8-jdk \
-	xserver-xorg
+	libxt6
 
 RUN mkdir matlab_install matlab
 RUN wget https://ssd.mathworks.com/supportfiles/downloads/R2020a/Release/3/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2020a_Update_3_glnxa64.zip && \
